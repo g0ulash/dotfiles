@@ -30,8 +30,11 @@ font pango:DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Screenshot using maim
+bindsym --release Print exec "maim -s ~/Pictures/$(date +'%Y-%m-%d_%H-%M-%S').png"
+
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -40,9 +43,14 @@ bindsym $mod+Shift+q kill
 bindsym Control+$mod+l exec i3lock
 
 # Pulse Audio Controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +1% # Increase sound
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -1% # Decrease sound
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # Mute sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% # Increase sound
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% # Decrease sound
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # Mute sound
+
+# Media player controls
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run

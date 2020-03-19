@@ -25,3 +25,15 @@ set title
 " Use relative linenumber
 "autocmd InsertEnter * set number
 "autocmd InsertLeave * set relativenumber
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Latex plugin
+Plug 'lervag/vimtex'
+
+call plug#end()
